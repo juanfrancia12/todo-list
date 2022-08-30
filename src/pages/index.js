@@ -212,7 +212,7 @@ export default function Home() {
               })
             ) : (
               <p className="col-span-4">
-                No hay tareas que coincidan con tu búsqueda.
+                No hay tareas que coincidan con tu búsqueda...
               </p>
             )}
           </section>
