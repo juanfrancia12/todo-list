@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@common/*": ["common/*"],
+      "@modules/*": ["modules/*"],
+      "@pages/*": ["pages/*"],
+
+      "@components/*": ["common/components/*"],
+      "@constants/*": ["common/constants/*"],
+      "@contexts/*": ["common/contexts/*"],
+      "@helpers/*": ["common/helpers/*"],
+      "@hooks/*": ["common/hooks/*"],
+      "@api/*": ["common/api/*"],
+
+      "@atoms/*": ["common/components/atoms/*"],
+      "@molecules/*": ["common/components/molecules/*"],
+      "@organisms/*": ["common/components/organisms/*"],
+      "@templates/*": ["common/components/templates/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx"],
+  "exclude": ["node_modules"]
+}
