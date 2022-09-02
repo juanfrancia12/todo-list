@@ -153,7 +153,7 @@ const Sidebar = () => {
   console.log(pathname.slice(1));
   return (
     <aside className="h-[calc(100vh-5rem)] sticky top-[5rem] border-r-2 border-gray-300 py-10 flex flex-col gap-6">
-      <span className="text-lg text-primary-600">GESTIÓN DE TAREAS</span>
+      <span className="text-lg text-primary-500">GESTIÓN DE TAREAS</span>
       <ul className="flex flex-col gap-4 text-primary-700">
         {ITEMS_SIDEBAR.map((item) => {
           const { id, icon, label, href, value } = item;
