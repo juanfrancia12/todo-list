@@ -2,7 +2,6 @@ import { SearchArray } from "@common/helpers/SearchArray";
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 const deleteTask = (id) => {
   return alert(`${id} - eliminado`);
@@ -13,27 +12,25 @@ const Tasks = ({ dataTasks }) => {
 
   return (
     <>
-      <div className="flex justify-between items-center">
+      <div className="w-full md:w-auto flex justify-between items-center flex-col md:flex-row gap-6">
         <span className="text-xl font-bold text-primary-500">
           TODAS LAS TAREAS
         </span>
-        <div className="flex items-center gap-6">
-          <div className="flex justify-center w-80">
-            <input
-              type="search"
-              className="block w-full px-3 py-1.5 text-gray-700 border border-solid border-gray-300 rounded focus:text-gray-700 focus:bg-white focus:border-primary-500 focus:outline-none"
-              id="exampleSearch"
-              placeholder="Buscar por nombre o descripción..."
-              value={textSearchTask}
-              onChange={(e) => setTextSearchTask(e.target.value)}
-            />
-          </div>
-          <button className="py-2 px-4 bg-primary-500 text-gray-100 rounded">
+        <div className="w-full flex flex-col items-center justify-between gap-6 sm:flex-row md:w-auto md:justify-end">
+          <input
+            type="search"
+            className="block w-full sm:w-3/5 md:w-80 px-3 py-1.5 text-gray-700 border border-solid border-gray-300 rounded focus:text-gray-700 focus:bg-white focus:border-primary-500 focus:outline-none"
+            id="exampleSearch"
+            placeholder="Buscar por nombre o descripción..."
+            value={textSearchTask}
+            onChange={(e) => setTextSearchTask(e.target.value)}
+          />
+          <button className="w-full sm:w-2/5 md:w-auto py-2 px-4 bg-primary-500 text-gray-100 rounded">
             Agregar nueva tarea
           </button>
         </div>
       </div>
-      <section className="w-full grid grid-cols-3 gap-6">
+      <section className="w-full grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {SearchArray(dataTasks, textSearchTask) ? (
           SearchArray(dataTasks, textSearchTask).map((task) => {
             const { id, name, description, date, time, state } = task;
@@ -72,7 +69,6 @@ const Tasks = ({ dataTasks }) => {
                       >
                         <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
                       </svg>
-                      {/* 01/09/2022 21:59:10 */}
                       <span>Editar</span>
                     </button>
                   </Link>

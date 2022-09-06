@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const ITEMS_SIDEBAR = [
   {
@@ -149,32 +150,96 @@ const ITEMS_SIDEBAR = [
 ];
 
 const Sidebar = () => {
+  const [isVisibleSidebar, setIsVisibleSidebar] = useState(false);
   const { pathname } = useRouter();
-  console.log(pathname.slice(1));
+
+  const handleSelectedOptionsSidebar = () => {
+    setIsVisibleSidebar(!isVisibleSidebar);
+  };
+
   return (
-    <aside className="h-[calc(100vh-5rem)] sticky top-[5rem] border-r-2 border-gray-300 py-10 flex flex-col gap-6">
-      <span className="text-lg text-primary-500">GESTIÓN DE TAREAS</span>
-      <ul className="flex flex-col gap-4 text-primary-700">
-        {ITEMS_SIDEBAR.map((item) => {
-          const { id, icon, label, href, value } = item;
-          return (
-            <Link key={id} href={href}>
-              <li
-                className={`w-60 px-6 py-4 rounded-md flex gap-2 items-center cursor-pointer ${
-                  pathname.slice(1) === value
-                    ? "font-bold text-primary-500 bg-primary-800"
-                    : ""
-                }`}
-              >
-                {icon}
-                <span> {label} </span>
-              </li>
-            </Link>
-          );
-        })}
-      </ul>
-    </aside>
+    <>
+      <button
+        className="fixed bottom-4 right-4 bg-primary-500 text-gray-100 rounded-full p-2 md:hidden"
+        onClick={() => handleSelectedOptionsSidebar()}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          className="w-6"
+          viewBox="0 0 16 16"
+        >
+          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+        </svg>
+      </button>
+      <aside className="md:py-10 h-max md:sticky md:top-[5rem] lg:col-span-1">
+        <span className="hidden md:block md:text-lg text-primary-500">
+          GESTIÓN DE TAREAS
+        </span>
+
+        <ul
+          className={`bg-gray-100 border border-gray-400 rounded-md flex flex-col gap-4 text-primary-700 fixed bottom-16 right-4 mt-4 md:static md:bg-transparent md:border-0 md:block ${
+            isVisibleSidebar ? "block" : "hidden"
+          }`}
+          onClick={() => handleSelectedOptionsSidebar()}
+        >
+          {ITEMS_SIDEBAR.map((item) => {
+            const { id, icon, label, href, value } = item;
+            return (
+              <Link key={id} href={href}>
+                <li
+                  className={`w-60 px-6 py-4 rounded-md flex gap-2 items-center cursor-pointer ${
+                    pathname.slice(1) === value
+                      ? "font-bold text-primary-500 bg-primary-800"
+                      : ""
+                  }`}
+                >
+                  {icon}
+                  <span> {label} </span>
+                </li>
+              </Link>
+            );
+          })}
+        </ul>
+      </aside>
+    </>
   );
 };
 
 export default Sidebar;
+
+/*
+ <button
+        className="fixed bottom-4 right-4 bg-primary-800 rounded-full p-2 md:hidden"
+        onClick={() => setIsVisibleSidebar(!isVisibleSidebar)}
+      >
+        ✔️
+      </button>
+      <aside className="md:col-span-2 xl:col-span-1 md:h-[calc(100vh-5rem)] md:sticky md:top-[5rem] md:border-r-2 border-gray-300 pt-10 flex flex-col gap-6">
+        <span className="text-lg text-primary-500">GESTIÓN DE TAREAS</span>
+
+        <ul
+          className={`bg-gray-100 border border-gray-400 rounded-md flex flex-col gap-4 text-primary-700 fixed bottom-16 right-4 mt-4 md:static md:bg-transparent md:border-0 md:block ${
+            isVisibleSidebar ? "block" : "hidden"
+          }`}
+        >
+          {ITEMS_SIDEBAR.map((item) => {
+            const { id, icon, label, href, value } = item;
+            return (
+              <Link key={id} href={href}>
+                <li
+                  className={`w-60 px-6 py-4 rounded-md flex gap-2 items-center cursor-pointer ${
+                    pathname.slice(1) === value
+                      ? "font-bold text-primary-500 bg-primary-800"
+                      : ""
+                  }`}
+                >
+                  {icon}
+                  <span> {label} </span>
+                </li>
+              </Link>
+            );
+          })}
+        </ul>
+      </aside>
+*/

@@ -7,9 +7,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <main className="px-32 grid grid-cols-4 gap-6 h-full">
+      <main className="px-4 sm:px-12 md:px-32 md:grid md:grid-cols-3 md:gap-6 xl:grid-cols-4 h-full">
         <Sidebar />
-        <section className="min-h-[calc(100vh-5rem)] h-max col-span-3 py-10 flex flex-col gap-10">
+        <section className="min-h-[calc(100vh-5rem)] h-max md:col-span-2 xl:col-span-3 py-6 md:py-10 flex flex-col gap-10">
           {children}
         </section>
       </main>
