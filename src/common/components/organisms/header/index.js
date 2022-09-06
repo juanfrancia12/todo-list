@@ -112,7 +112,7 @@ const Header = () => {
       </div>
       {isVisibleOptionsHeader && (
         <ul
-          className="absolute top-[5rem] right-4 sm:right-20 md:right-32 border border-gray-400 rounded bg-gray-100"
+          className="absolute top-[5rem] right-4 sm:right-20 md:right-32 border border-gray-400 rounded-md bg-gray-100"
           onClick={() => handleSelectedOptionsHeader()}
         >
           {HEADER_ITEMS_OPTIONS.map((item) => {
@@ -121,7 +121,7 @@ const Header = () => {
               <li
                 key={id}
                 // className="py-3 px-6 cursor-pointer hover:bg-primary-600 hover:text-gray-300"
-                className="py-3 px-5 cursor-pointer flex gap-3 hover:text-primary-500 hover:bg-primary-800"
+                className="py-3 px-5 cursor-pointer flex gap-3 hover:text-primary-500 hover:bg-primary-800 rounded-md"
               >
                 {icon}
                 {name}

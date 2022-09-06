@@ -163,14 +163,25 @@ const Sidebar = () => {
         className="fixed bottom-4 right-4 bg-primary-500 text-gray-100 rounded-full p-2 md:hidden"
         onClick={() => handleSelectedOptionsSidebar()}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          className="w-6"
-          viewBox="0 0 16 16"
-        >
-          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-        </svg>
+        {!isVisibleSidebar ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            className="w-8"
+            viewBox="0 0 16 16"
+          >
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            className="w-8"
+            viewBox="0 0 16 16"
+          >
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        )}
       </button>
       <aside className="md:py-10 h-max md:sticky md:top-[5rem] lg:col-span-1">
         <span className="hidden md:block md:text-lg text-primary-500">
@@ -178,7 +189,7 @@ const Sidebar = () => {
         </span>
 
         <ul
-          className={`bg-gray-100 border border-gray-400 rounded-md flex flex-col gap-4 text-primary-700 fixed bottom-16 right-4 mt-4 md:static md:bg-transparent md:border-0 md:block ${
+          className={`bg-gray-100 border border-gray-400 rounded-md flex flex-col gap-4 text-primary-700 fixed bottom-20 right-4 mt-4 md:static md:bg-transparent md:border-0 md:block ${
             isVisibleSidebar ? "block" : "hidden"
           }`}
           onClick={() => handleSelectedOptionsSidebar()}
@@ -188,7 +199,7 @@ const Sidebar = () => {
             return (
               <Link key={id} href={href}>
                 <li
-                  className={`w-60 px-6 py-4 rounded-md flex gap-2 items-center cursor-pointer ${
+                  className={`px-5 py-3 rounded-md flex gap-2 items-center cursor-pointer ${
                     pathname.slice(1) === value
                       ? "font-bold text-primary-500 bg-primary-800"
                       : ""
